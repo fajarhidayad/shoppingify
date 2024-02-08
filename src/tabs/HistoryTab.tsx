@@ -16,16 +16,16 @@ const HistoryMenu = (props: { detailFn: () => void }) => {
   return (
     <>
       <h1 className="font-bold text-[26px] mb-10">Shopping history</h1>
-      <div className="mb-12">
+      <div className="mb-8 lg:mb-12">
         <h3 className="text-xs mb-4">December 2023</h3>
-        <ul className="flex flex-col gap-y-7">
+        <ul className="flex flex-col gap-y-3">
           <HistoryItem onClick={props.detailFn} title="Grocery List" status />
           <HistoryItem onClick={props.detailFn} title="Party" status={false} />
         </ul>
       </div>
-      <div className="mb-12">
+      <div className="mb-8 lg:mb-12">
         <h3 className="text-xs mb-4">January 2024</h3>
-        <ul className="flex flex-col gap-y-7">
+        <ul className="flex flex-col gap-y-3">
           <HistoryItem onClick={props.detailFn} title="Grocery List" status />
           <HistoryItem onClick={props.detailFn} title="Party" status={false} />
         </ul>
@@ -73,11 +73,11 @@ const HistoryItem = (props: {
   return (
     <li
       onClick={props.onClick}
-      className="bg-white rounded-xl py-5 pl-5 pr-4 shadow flex items-center cursor-pointer"
+      className="bg-white rounded-xl py-5 px-3 lg:px-5 shadow flex items-center cursor-pointer"
     >
       <p>{props.title}</p>
-      <div className="ml-auto flex items-center gap-x-5">
-        <p className="text-xs text-gray-400 flex items-center gap-x-2.5">
+      <div className="ml-auto flex items-center gap-x-2 lg:gap-x-5">
+        <p className="hidden text-xs text-gray-400 lg:flex items-center gap-x-2.5">
           <CalendarIcon /> <span>Mon 24.12.2023</span>
         </p>
         <span

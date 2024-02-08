@@ -1,14 +1,20 @@
+import { createLazyFileRoute } from '@tanstack/react-router';
 import clsx from 'clsx';
 import {
-  LineChart,
-  Line,
   CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
 } from 'recharts';
+
+export const Route = createLazyFileRoute('/statistics')({
+  component: StatisticsPage,
+});
+
 const data = [
   { name: 'January', items: 35, pv: 2400, amt: 2400 },
   { name: 'February', items: 120, pv: 2400, amt: 2400 },
@@ -19,7 +25,7 @@ const data = [
   { name: 'July', items: 62, pv: 2400, amt: 2400 },
 ];
 
-export default function StatisticsTab() {
+function StatisticsPage() {
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 mb-16">

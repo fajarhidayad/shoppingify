@@ -1,28 +1,22 @@
-import React from 'react';
-import { SearchIcon, PlusIcon } from 'lucide-react';
-import { useSideMenuStore } from '@/store/sideMenuStore';
 import { useShoppingListStore } from '@/store/shoppingListStore';
+import { useSideMenuStore } from '@/store/sideMenuStore';
+import { createFileRoute } from '@tanstack/react-router';
+import { PlusIcon, SearchIcon } from 'lucide-react';
 
-export default function ItemsTab() {
+export const Route = createFileRoute('/')({
+  component: HomePage,
+});
+
+function HomePage() {
   return (
     <>
-      <div className="hidden md:flex items-start justify-between gap-x-14 mb-9">
+      <header className="hidden md:flex items-start justify-between gap-x-14 mb-9">
         <h1 className="text-[26px]">
           <span className="text-primary font-bold">Shoppingify</span> allows you
           take your shopping list wherever you go
         </h1>
-        <div className="flex rounded-xl shadow-md w-[275px] bg-white p-4 gap-x-5">
-          <label htmlFor="search">
-            <SearchIcon size={26} />
-          </label>
-          <input
-            type="text"
-            id="search"
-            className="focus:outline-none flex-1"
-            placeholder="search item"
-          />
-        </div>
-      </div>
+        <SearchInput />
+      </header>
 
       <CategorySection title="Fruit and vegetables">
         <ShoppingItem name="Avocado" />
@@ -30,24 +24,6 @@ export default function ItemsTab() {
         <ShoppingItem name="Bunch of carrots" />
         <ShoppingItem name="Chicken 1kg" />
         <ShoppingItem name="Pre-cooked corn 450g" />
-      </CategorySection>
-      <CategorySection title="Meat and Fish">
-        <ShoppingItem name="Chicken leg box" />
-        <ShoppingItem name="Salmon 1kg" />
-        <ShoppingItem name="Steak 2kg" />
-        <ShoppingItem name="Rib eye 1kg" />
-      </CategorySection>
-      <CategorySection title="Beverages">
-        <ShoppingItem name="Chicken leg box" />
-        <ShoppingItem name="Salmon 1kg" />
-        <ShoppingItem name="Steak 2kg" />
-        <ShoppingItem name="Rib eye 1kg" />
-      </CategorySection>
-      <CategorySection title="Pets">
-        <ShoppingItem name="Chicken leg box" />
-        <ShoppingItem name="Salmon 1kg" />
-        <ShoppingItem name="Steak 2kg" />
-        <ShoppingItem name="Rib eye 1kg" />
       </CategorySection>
     </>
   );
@@ -100,3 +76,19 @@ const ShoppingItem = (props: { name: string }) => {
     </li>
   );
 };
+
+function SearchInput() {
+  return (
+    <div className="flex rounded-xl shadow-md w-[275px] bg-white p-4 gap-x-5 focus-within:ring focus-within:ring-primary transition-all duration-200">
+      <label htmlFor="search">
+        <SearchIcon size={26} />
+      </label>
+      <input
+        type="text"
+        id="search"
+        className="focus:outline-none flex-1"
+        placeholder="search item"
+      />
+    </div>
+  );
+}
